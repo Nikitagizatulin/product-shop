@@ -2,7 +2,7 @@
 
 > A Node.js project with ( Express.js, Passport.js, Pug template, Bootstrap, Stripe)
 
-![](https://github.com/Nikitagizatulin/)
+![](https://github.com/Nikitagizatulin/product-shop/blob/master/readme_image.jpg)
 
 ## Build Setup
 
