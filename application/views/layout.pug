@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title= title
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(href='/stylesheets/font-awesome.min.css', rel='stylesheet', type='text/css')
+        link(rel='stylesheet' href='/stylesheets/sb-admin.min.css' type='text/css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body.bg-dark
+        nav(class="navbar navbar-expand-lg navbar-dark bg-primary")
+            a(class="navbar-brand" href="/") Product-Shop
+            button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")
+            div(class="collapse navbar-collapse" id="navbarSupportedContent")
+                ul(class="navbar-nav mr-auto")
+                    li(class=(active === '/'?"nav-item active":"nav-item"))
+                        a(class="nav-link" href="/") Home
+                    if authorised
+                        li(class=(active === 'cart'?"nav-item active":"nav-item"))
+                            a(class="nav-link" href="/cart") Cart
+                        if admin
+                            li(class="nav-item")
+                                a(class="nav-link" href="/admin") Admin Panel
+                ul(class="navbar-nav navbar-right")
+                    li(class=(active === 'login'?"nav-item active":"nav-item"))
+                        if authorised
+                            a.nav-link(data-toggle="modal" data-target="#exampleModal") Logout
+                                i.fa.fa-fw.fa-sign-out
+                        else
+                            a(class="nav-link" href="/login")
+                                i.fa.fa-fw.fa-sign-in
+                                .
+                                    Login
+                    unless authorised
+                        li(class=(active === 'register'?"nav-item active":"nav-item"))
+                            a(class="nav-link" href="/register") Register
+        block content
+        include modal/logout.pug
+        script(src='/javascripts/jquery.min.js')
+        script(src='/javascripts/bootstrap.bundle.min.js')
+        script(src='/javascripts/jquery.easing.min.js')

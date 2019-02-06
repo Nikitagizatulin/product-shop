@@ -1,0 +1,23 @@
+extends layout
+block content
+  .container
+    if errors
+      .alert.alert-danger.mt-4
+        strong Alert!
+        ul
+          each list in  errors
+            li=list.msg || list
+    .card.card-login.mx-auto.mt-5
+      .card-header
+        | Login
+      .card-body
+        form(action='/login' method='post')
+          .form-group
+            label(for='email') Email address
+            input#email.form-control(type='email', required, name='email', aria-describedby='emailHelp', placeholder='Enter email')
+          .form-group
+            label(for='password') Password
+            input#password.form-control(type='password', required, placeholder='Password' name='password')
+          input.btn.btn-primary.btn-block(value='Login' type="submit")
+        .text-center
+          a.d-block.small.mt-3(href='/register') Register an Account

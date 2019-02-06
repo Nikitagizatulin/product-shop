@@ -1,0 +1,47 @@
+extends layout
+
+block content
+    .container-fluid.mt-5
+        if success
+            .alert.alert-success
+                strong=success
+        .card
+            .card-header
+                i.fa.fa-table
+                |   All of Product
+            .card-body
+                if data
+                    table.table.table-striped.table-hover
+                        thead
+                            tr
+                                th(style="width:10%") #
+                                th(style="width:35%") Title
+                                th(style="width:35%") Description
+                                th(style="width:10%") Price
+                                if authorised
+                                    th(style="width:10%") Buy
+                        tbody
+                            - var i = 1;
+                            each product in data
+                                tr
+                                    td=i++
+                                    td= product.title
+                                    td= product.description
+                                    td= product.price
+                                    if authorised
+                                        td
+                                            form(method="POST", action="/pay")
+                                                script.stripe-button(
+                                                src = "https://checkout.stripe.com/checkout.js",
+                                                data-key = 'pk_test_Cn7l6aid7PNyVKzTVgsKYazt',
+                                                data-amount=product.price + '00',
+                                                data-name=product.title,
+                                                data-description=product.description,
+                                                data-locale='auto',
+                                                data-currency='gbp'
+                                                )
+                                                input(type="hidden", name="chargeAmount", value=product.price + '00')
+                                                input(type="hidden", name="userId", value=userId)
+                                                input(type="hidden", name="productId", value=product.id)
+                else
+                    div.alert.alert-warning.font-weight-bold(role="alert") No yet product!

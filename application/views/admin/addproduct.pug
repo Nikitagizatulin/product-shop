@@ -1,0 +1,24 @@
+extends index
+block content
+    if errors
+        .alert.alert-danger.mt-4
+            strong Alert!
+            ul
+                each list in  errors
+                    li=list.msg || list
+    .card
+        .card-header Add product
+        .card-body
+            form(action='/admin/addproduct', method="POST")
+                .form-group
+                    .form-row
+                        .col-md-6
+                            label(for="title") Title of product
+                            input#title.form-control( type="text", name="title", placeholder="Enter title of product")
+                        .col-md-6
+                            label(for="price") Price of product
+                            input#price.form-control( type="number", name="price", placeholder="Enter title of product")
+                .form-group
+                    label(for="description") Description
+                    textarea#description.form-control(name="description", rows="4", placeholder="Here is description text...")
+                input.btn.btn-primary.btn-lg(value="Add", type="Submit")

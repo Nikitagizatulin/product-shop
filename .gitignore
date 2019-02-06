@@ -1,0 +1,4 @@
+application/node_modules
+application/package-lock.json.
+application/config/database.json
+.idea

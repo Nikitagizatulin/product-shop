@@ -1,0 +1,33 @@
+extends index
+block content
+    if success
+        .alert.alert-success
+            strong=success
+    if errors
+        .alert.alert-danger
+            strong=errors
+    .card
+        .card-header
+            i.fa.fa-table
+            |   All Users
+        .card-body
+            if users
+                table.table.table-striped.table-hover
+                    thead
+                        tr
+                            th(style="width:10%") #
+                            th(style="width:40%") Email
+                            th(style="width:40%") Role
+                            th(style="width:10%") Action
+                    tbody
+                        each user in users
+                            tr
+                                td= user.id
+                                td= user.email
+                                td= user.role
+                                td
+                                    form(action='/admin/deluser', method='post')
+                                        input(type='hidden', value=user.id, name='user_id')
+                                        input.btn.btn-danger#delUser(type='submit', value='Delete')
+            else
+                div.alert.alert-warning.font-weight-bold(role="alert") No yet users!

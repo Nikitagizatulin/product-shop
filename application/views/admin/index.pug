@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title Admin Panel
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='/stylesheets/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='/stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='/stylesheets/sb-admin.min.css', rel='stylesheet')
+
+  body#page-top.fixed-nav.sticky-footer.bg-dark
+    include navbar.pug
+    .content-wrapper
+      .container-fluid
+        block content
+      include scroll-to-top.pug
+      include ../modal/logout.pug
+      script(src='/javascripts/jquery.min.js')
+      script(src='/javascripts/bootstrap.bundle.min.js')
+      script(src='/javascripts/jquery.easing.min.js')
+      script(src='/javascripts/sb-admin.min.js')
+      script(src='/javascripts/script.js')
+
+
+

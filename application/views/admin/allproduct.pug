@@ -1,0 +1,35 @@
+extends index
+block content
+    if success
+        .alert.alert-success
+            strong=success
+    if errors
+        .alert.alert-danger
+            strong=errors
+    .card
+        .card-header
+            i.fa.fa-table
+            |   All Product
+        .card-body
+            if data
+                table.table.table-striped.table-hover
+                    thead
+                        tr
+                            th(scope="col") Product id
+                            th(scope="col") Title
+                            th(scope="col") Description
+                            th(scope="col") Price
+                            th(scope="col") Action
+                    tbody
+                        each product in data
+                            tr
+                                td= product.id
+                                td= product.title
+                                td= product.description
+                                td= product.price
+                                td
+                                    form(action="/admin/delete", method="POST")
+                                        input(type="hidden", name="product_id", value=product.id)
+                                        input.btn.btn-danger#delProduct(type="submit", value="Delete")
+            else
+                div.alert.alert-warning.font-weight-bold(role="alert") No yet product!

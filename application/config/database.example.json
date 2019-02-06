@@ -1,0 +1,7 @@
+{
+    "host"     : "localhost",
+    "database" : "dtabase_name",
+    "connectionLimit" : "10",
+    "user"     : "root",
+    "password" : "secret_password"
+}
