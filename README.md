@@ -8,7 +8,7 @@
 
 ``` bash
 # first what you need - go to the application folder and make a comand
-yarn install | npm install
+yarn install || npm install
 
 # after this need create database settings
 cd ./config
@@ -20,6 +20,6 @@ cp ./database.example ./database.json
 
 # now you can start the project
 
-yarn start | npm run start 
+yarn start || npm run start 
 
 ```
